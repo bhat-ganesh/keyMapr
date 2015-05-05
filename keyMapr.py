@@ -112,9 +112,14 @@ if counter:
     contents = "".join(contents)
     f.write(contents)
     f.close()
-    print "\n" + inFile + " processed successfully"
-    print "Output file is " + outFile
-    print "Look for: KEY_PRESS = <key>"
+    print inFile + " processed successfully\n"
     print "Total number of key presses = " + str(keyCounter) + "\n"
     print firstKeyPressInfo
+    
+    print "Output file is " + outFile
+    print "Look for: KEY_PRESS = <key>"
+    print "\nTo compare files before use run:"
+    print "vimdiff " + outFile + " " + inFile
+    print "\nTo use changed file run:"
+    print "mv " + outFile + " " + inFile + "\n"
 print "<<<<<"
