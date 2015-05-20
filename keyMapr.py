@@ -79,7 +79,7 @@ contents = f.readlines()
 f.close()
 counter = 0
 keyCounter = 0
-firstKeyPressInfo = "     <TIME>     : <KEY>\n"
+firstKeyPressInfo = "<LINE> : <TIME> : <KEY>\n\n"
 
 keyPressPattern = re.compile("^.*\|.key.*: .*$")
 firstKeyPattern = re.compile("\+key\:")
@@ -104,7 +104,7 @@ with open(sys.argv[1], 'r') as file:
                 keyCounter = keyCounter + 1
                 matchKeyTime = re.search(keyTimePattern, line)
                 keyTime = matchKeyTime.group()
-                firstKeyPressInfo += keyTime + " : " + keyName + "\n"
+                firstKeyPressInfo += str(lineCount+1) + " : " + keyTime + " : " + keyName + "\n"
 
 if counter:
     outFile = inFile+"_changed"
@@ -113,7 +113,7 @@ if counter:
     f.write(contents)
     f.close()
     print inFile + " processed successfully\n"
-    print "Total number of key presses = " + str(keyCounter) + "\n"
+    print "Total number of key presses = " + str(keyCounter)
     print firstKeyPressInfo
     
     print "Output file is " + outFile
